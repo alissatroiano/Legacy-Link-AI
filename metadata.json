@@ -1,5 +1,5 @@
 {
-  "name": "LegacyLink: COBOL to Python Modernizer",
-  "description": "A sophisticated AI-driven platform for incrementally migrating legacy banking systems from COBOL to modern, scalable Python. Features automated code analysis, chunked conversion, and unit test generation.",
+  "name": "LegacyLink AI: GCE Mainframe Modernization",
+  "description": "Enterprise-grade rehosting platform for migrating COBOL workloads to Google Cloud Compute Engine using partner runtimes like Micro Focus or Rocket. Features incremental provisioning, automated IaC generation, and cloud-ready validation.",
   "requestFramePermissions": []
 }
