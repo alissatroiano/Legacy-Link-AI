@@ -1,29 +1,26 @@
 
-// Bailey the Bunny says: Hello there, little architect! Let's make sure our laces are tied tight and our types match perfectly!
-// Renaming originalName to name so we can follow the trail of our COBOL code just like a bunny trail! Hop, hop, hooray!
-
-export type ModernizationStrategy = 'rehosting' | 'refactoring' | 'hybrid';
-
 export interface CodeChunk {
   id: string;
-  /* Bailey the Bunny: Renamed to match the API response and fix the errors! */
-  name: string;
+  originalName: string;
   cobolCode: string;
-  // Refactoring outputs
   pythonCode?: string;
   unitTests?: string;
-  // Rehosting outputs
-  terraform?: string;
-  startup?: string;
-  recommendedInstance?: string;
-  
-  status: 'pending' | 'analyzing' | 'processing' | 'completed' | 'error';
+  status: 'pending' | 'analyzing' | 'converting' | 'testing' | 'completed' | 'error';
   progress: number;
   errorMessage?: string;
 }
 
+export interface ModernizationSession {
+  id: string;
+  projectName: string;
+  totalLines: number;
+  chunks: CodeChunk[];
+  startTime: number;
+}
+
 export enum ConversionStep {
   IDLE = 'IDLE',
+  UPLOADING = 'UPLOADING',
   ANALYZING_SYSTEM = 'ANALYZING_SYSTEM',
   CONVERTING_INCREMENTS = 'CONVERTING_INCREMENTS',
   FINALIZING = 'FINALIZING'
@@ -34,7 +31,7 @@ export interface GitHubUser {
   login: string;
   name: string;
   avatar_url: string;
-  role: string;
+  role: 'Developer' | 'Admin' | 'Architect';
 }
 
 export interface GitHubConfig {
