@@ -419,22 +419,25 @@ const App: React.FC = () => {
             <h2 className="text-sm font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-2 mb-4">
               <BarChart3 className="w-4 h-4" /> Migration Health
             </h2>
-            <div className="flex-1 min-h-0">
-               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={statsData} layout="vertical" margin={{ left: -10, right: 20 }}>
-                  <XAxis type="number" hide />
-                  <YAxis dataKey="name" type="category" width={90} axisLine={false} tickLine={false} style={{ fontSize: '10px', fill: '#94a3b8' }} />
-                  <Tooltip 
-                    cursor={{ fill: 'transparent' }} 
-                    contentStyle={{ backgroundColor: '#1e293b', border: 'none', borderRadius: '8px', fontSize: '10px' }}
-                  />
-                  <Bar dataKey="value" radius={[0, 4, 4, 0]}>
-                    {statsData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
+            {/* The absolute inset wrapper ensures Recharts finds valid dimensions */}
+            <div className="flex-1 relative min-h-0">
+               <div className="absolute inset-0">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={statsData} layout="vertical" margin={{ left: -10, right: 20 }}>
+                    <XAxis type="number" hide />
+                    <YAxis dataKey="name" type="category" width={90} axisLine={false} tickLine={false} style={{ fontSize: '10px', fill: '#94a3b8' }} />
+                    <Tooltip 
+                      cursor={{ fill: 'transparent' }} 
+                      contentStyle={{ backgroundColor: '#1e293b', border: 'none', borderRadius: '8px', fontSize: '10px' }}
+                    />
+                    <Bar dataKey="value" radius={[0, 4, 4, 0]}>
+                      {statsData.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={entry.color} />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
             </div>
           </div>
         </aside>
